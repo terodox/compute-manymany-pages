@@ -11,7 +11,7 @@ async function main() {
 
   const sourceIsrTemplateFilePath = join(__dirname, "isr-template.tsx");
   const sourcePageTemplateFilePath = join(__dirname, "page-template.tsx");
-  for (let i = 0; i < 2000; i++) {
+  for (let i = 0; i < 1200; i++) {
     const isrDestination = join(isrOutputFolder, `isr${i}.tsx`);
     const pageDestination = join(pageOutputFolder, `page${i}.tsx`);
     await copyFile(
