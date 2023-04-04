@@ -1,13 +1,19 @@
 import { constants } from "node:fs";
-import { copyFile } from "node:fs/promises";
+import { copyFile, mkdir } from "node:fs/promises";
 import { join } from "node:path";
 
 async function main() {
+  const isrOutputFolder = join(__dirname, "../src/pages/isr");
+  const pageOutputFolder = join(__dirname, "../src/pages/fun");
+
+  await mkdir(isrOutputFolder, { recursive: true });
+  await mkdir(pageOutputFolder, { recursive: true });
+
   const sourceIsrTemplateFilePath = join(__dirname, "isr-template.tsx");
   const sourcePageTemplateFilePath = join(__dirname, "page-template.tsx");
-  for (let i = 0; i < 1000; i++) {
-    const isrDestination = join(__dirname, "../src/pages/isr", `isr${i}.tsx`);
-    const pageDestination = join(__dirname, "../src/pages/fun", `page${i}.tsx`);
+  for (let i = 0; i < 2000; i++) {
+    const isrDestination = join(isrOutputFolder, `isr${i}.tsx`);
+    const pageDestination = join(pageOutputFolder, `page${i}.tsx`);
     await copyFile(
       sourceIsrTemplateFilePath,
       isrDestination,
