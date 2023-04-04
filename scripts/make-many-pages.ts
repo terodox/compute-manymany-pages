@@ -3,27 +3,35 @@ import { copyFile, mkdir } from "node:fs/promises";
 import { join } from "node:path";
 
 async function main() {
-  const isrOutputFolder = join(__dirname, "../src/pages/isr");
-  const pageOutputFolder = join(__dirname, "../src/pages/fun");
+  const copyEm = [
+    // {
+    //   destFolder: join(__dirname, "../src/pages/isr"),
+    //   sourceFile: join(__dirname, "isr-template.tsx"),
+    //   nameTemplate: "isr{}.tsx",
+    //   howMany: 800,
+    // },
+    // {
+    //   destFolder: join(__dirname, "../src/pages/fun"),
+    //   sourceFile: join(__dirname, "page-template.tsx"),
+    //   nameTemplate: "page{}.tsx",
+    //   howMany: 800,
+    // },
+    {
+      destFolder: join(__dirname, "../public/gif"),
+      sourceFile: join(__dirname, "smiley_big.gif"),
+      nameTemplate: "gif{}.gif",
+      howMany: 227,
+    },
+  ];
 
-  await mkdir(isrOutputFolder, { recursive: true });
-  await mkdir(pageOutputFolder, { recursive: true });
+  for (const oneItem of copyEm) {
+    await mkdir(oneItem.destFolder, { recursive: true });
 
-  const sourceIsrTemplateFilePath = join(__dirname, "isr-template.tsx");
-  const sourcePageTemplateFilePath = join(__dirname, "page-template.tsx");
-  for (let i = 0; i < 800; i++) {
-    const isrDestination = join(isrOutputFolder, `isr${i}.tsx`);
-    const pageDestination = join(pageOutputFolder, `page${i}.tsx`);
-    await copyFile(
-      sourceIsrTemplateFilePath,
-      isrDestination,
-      constants.COPYFILE_FICLONE
-    );
-    await copyFile(
-      sourcePageTemplateFilePath,
-      pageDestination,
-      constants.COPYFILE_FICLONE
-    );
+    for (let i = 0; i < oneItem.howMany; i++) {
+      const fileName = oneItem.nameTemplate.replace("{}", i.toString());
+      const filePath = join(oneItem.destFolder, fileName);
+      await copyFile(oneItem.sourceFile, filePath, constants.COPYFILE_FICLONE);
+    }
   }
 }
 
