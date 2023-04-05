@@ -17,10 +17,10 @@ async function main() {
     //   howMany: 800,
     // },
     {
-      destFolder: join(__dirname, "../public/gif"),
-      sourceFile: join(__dirname, "smiley_big.gif"),
-      nameTemplate: "gif{}.gif",
-      howMany: 227,
+      destFolder: join(__dirname, "../public/small-files"),
+      sourceFile: join(__dirname, "one-hundred-bytes.png"),
+      nameTemplate: "one-hundred-bytes-{}.png",
+      howMany: 55_000,
     },
   ];
 
