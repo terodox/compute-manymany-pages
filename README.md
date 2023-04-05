@@ -1,6 +1,6 @@
-## Demo pages
+## Show small file size discrepencies
 
-- /pillars - show the difference between static import of image vs referencing image
+`npm run make-pages` will generate 100,000 - 100 bytes files in the `public` directory. These files will occupy 1024 bytes of disk space each, yielding a mismatch in file size calculations.
 
 ## Getting Started
 

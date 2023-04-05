@@ -20,7 +20,7 @@ async function main() {
       destFolder: join(__dirname, "../public/small-files"),
       sourceFile: join(__dirname, "one-hundred-bytes.png"),
       nameTemplate: "one-hundred-bytes-{}.png",
-      howMany: 55_000,
+      howMany: 100_000,
     },
   ];
 
